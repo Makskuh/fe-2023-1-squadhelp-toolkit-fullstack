@@ -3,7 +3,7 @@ import http from '../interceptor';
 export const registerRequest = data => http.post('registration', data);
 export const loginRequest = data => http.post('login', data);
 export const getUser = () => http.post('getUser');
-export const updateContest = data => http.post('updateContest', data);
+export const updateContest = data => http.put('contests', data);
 export const setNewOffer = data => http.post('setNewOffer', data);
 export const setOfferStatus = data => http.post('setOfferStatus', data);
 export const downloadContestFile = data =>
@@ -27,7 +27,7 @@ export const removeChatFromCatalog = data =>
 export const changeCatalogName = data => http.post('updateNameCatalog', data);
 export const getCustomersContests = data =>
   http.post(
-    'getCustomersContests',
+    'contests',
     { limit: data.limit, offset: data.offset },
     {
       headers: {
@@ -45,7 +45,7 @@ export const getActiveContests = ({
   awardSort,
   ownEntries,
 }) =>
-  http.post('getAllContests', {
+  http.get('contests', {
     offset,
     limit,
     typeIndex,
@@ -56,7 +56,7 @@ export const getActiveContests = ({
   });
 
 export const getContestById = data =>
-  http.get('getContestById', {
+  http.get('/getContestById', {
     headers: {
       contestId: data.contestId,
     },
