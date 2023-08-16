@@ -111,8 +111,8 @@ module.exports.updateContest = async (req, res, next) => {
     req.body.fileName = req.file.filename;
     req.body.originalFileName = req.file.originalname;
   }
-  const contestId = req.body.contestId;
-  delete req.body.contestId;
+  const {params:{contestId}} = req;
+  console.log(contestId)
   try {
     const updatedContest = await contestQueries.updateContest(req.body, {
       id: contestId,
@@ -218,10 +218,13 @@ module.exports.setOfferStatus = async (req, res, next) => {
 };
 
 module.exports.getCustomersContests = (req, res, next) => {
+
+  const {params: {limit,offset}} = req;
+  console.log(limit,offset)
   db.Contests.findAll({
     where: { status: req.headers.status, userId: req.tokenData.userId },
-    limit: req.body.limit,
-    offset: req.body.offset ? req.body.offset : 0,
+    limit: limit,
+    offset: offset ? offset : 0,
     order: [['id', 'DESC']],
     include: [
       {

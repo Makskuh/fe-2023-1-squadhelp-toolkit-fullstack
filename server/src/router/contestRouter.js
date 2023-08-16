@@ -7,14 +7,13 @@ const contestRouter = express.Router();
 
 contestRouter.use(checkToken.checkToken)
 
-contestRouter
-  .route('/')
-  .get(
+contestRouter.get('/all',
     basicMiddlewares.onlyForCreative,
     contestController.getContests
   )
-  .post(contestController.getCustomersContests)
-  .put(
+  contestRouter.get('/customer',contestController.getCustomersContests);
+
+  contestRouter.put('/:contestId',
     upload.updateContestFile,
     contestController.updateContest
   );
