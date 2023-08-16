@@ -43,6 +43,13 @@ router.post(
 //   contestController.getCustomersContests,
 // );
 
+// router.put(
+//   '/contests',
+//   checkToken.checkToken,
+//   upload.updateContestFile,
+//   contestController.updateContest,
+// );
+
 // router.get(
 //   '/getContestById',
 //   checkToken.checkToken,
@@ -65,12 +72,7 @@ router.get(
   contestController.downloadFile
 );
 
-// router.put(
-//   '/contests',
-//   checkToken.checkToken,
-//   upload.updateContestFile,
-//   contestController.updateContest,
-// );
+
 
 router.post(
   '/setNewOffer',

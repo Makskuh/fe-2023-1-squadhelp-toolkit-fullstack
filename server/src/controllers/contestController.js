@@ -35,11 +35,13 @@ module.exports.dataForContest = async (req, res, next) => {
     next(new ServerError('cannot get contest preferences'));
   }
 };
-
 module.exports.getContestById = async (req, res, next) => {
   try {
+      const {
+        params: { contestId },
+      } = req;
     let contestInfo = await db.Contests.findOne({
-      where: { id: req.headers.contestid },
+      where: { id: contestId},
       order: [
         [db.Offers, 'id', 'asc'],
       ],

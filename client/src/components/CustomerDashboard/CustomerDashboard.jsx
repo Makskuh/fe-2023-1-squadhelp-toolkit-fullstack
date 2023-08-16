@@ -111,6 +111,7 @@ class CustomerDashboard extends React.Component {
           >
             Inactive contests
           </div>
+          <div className={styles.filter}><a href="#">Transaction history</a></div>
         </div>
         <div className={styles.contestsContainer}>
           {error ? (
