@@ -11,6 +11,8 @@ import ContestsContainer from '../ContestsContainer/ContestsContainer';
 import ContestBox from '../ContestBox/ContestBox';
 import styles from './CustomerDashboard.module.sass';
 import TryAgain from '../TryAgain/TryAgain';
+import {Link} from 'react-router-dom';
+
 
 class CustomerDashboard extends React.Component {
   loadMore = startFrom => {
@@ -111,7 +113,7 @@ class CustomerDashboard extends React.Component {
           >
             Inactive contests
           </div>
-          <div className={styles.filter}><a href="#">Transaction history</a></div>
+          <div className={styles.filter}><Link to='/transaction'>Transaction history</Link></div>
         </div>
         <div className={styles.contestsContainer}>
           {error ? (

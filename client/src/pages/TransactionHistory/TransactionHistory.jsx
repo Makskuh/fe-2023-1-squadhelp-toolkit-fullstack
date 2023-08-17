@@ -1,11 +1,14 @@
-import React from 'react'
-import Header from '../../components/Header/Header'
+import React from 'react';
+import Header from '../../components/Header/Header';
+import TransactionTable from '../../components/TransactionTable';
+
 function TransactionHistory() {
   return (
     <div>
-      <Header/>
-      TransactionHistory</div>
-  )
+      <Header />
+      <TransactionTable/>
+    </div>
+  );
 }
 
 export default TransactionHistory;
