@@ -10,7 +10,7 @@ const upload = require('../utils/fileUpload');
 const contestRouter = require('./contestRouter');
 const router = express.Router();
 
-router.use('/contests', contestRouter);
+router.use('/contests',checkToken.checkToken, contestRouter);
 
 router.post(
   '/registration',

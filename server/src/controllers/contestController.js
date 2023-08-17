@@ -112,7 +112,6 @@ module.exports.updateContest = async (req, res, next) => {
     req.body.originalFileName = req.file.originalname;
   }
   const {params:{contestId}} = req;
-  console.log(contestId)
   try {
     const updatedContest = await contestQueries.updateContest(req.body, {
       id: contestId,

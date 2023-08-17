@@ -1,11 +1,8 @@
 const express = require('express');
 const contestController = require('../controllers/contestController');
 const basicMiddlewares = require('../middlewares/basicMiddlewares');
-const checkToken = require('../middlewares/checkToken');
 const upload = require('../utils/fileUpload');
 const contestRouter = express.Router();
-
-contestRouter.use(checkToken.checkToken)
 
 contestRouter.get('/all',
     basicMiddlewares.onlyForCreative,
