@@ -1,11 +1,23 @@
+require('dotenv').config();
+const path = require('path');
+
+const {
+  JWT_SECRET,
+  ACCESS_TOKEN_TIME,
+  SQUADHELP_BANK_NUMBER,
+  SQUADHELP_BANK_NAME,
+  SQUADHELP_BANK_CVC,
+  SQUADHELP_BANK_EXPIRY,
+} = process.env;
+
 module.exports = {
-  JWT_SECRET: 'asdasdasd4as5d4as8d7a8sd4as65d4a8sd7asd4as56d4',
-  ACCESS_TOKEN_TIME: 60 * 60,
+  JWT_SECRET,
+  ACCESS_TOKEN_TIME,
   SALT_ROUNDS: 5,
-  SQUADHELP_BANK_NUMBER: '4564654564564564',
-  SQUADHELP_BANK_NAME: 'SquadHelp',
-  SQUADHELP_BANK_CVC: '453',
-  SQUADHELP_BANK_EXPIRY: '11/22',
+  SQUADHELP_BANK_NUMBER,
+  SQUADHELP_BANK_NAME,
+  SQUADHELP_BANK_CVC,
+  SQUADHELP_BANK_EXPIRY,
   CUSTOMER: 'customer',
   CREATOR: 'creator',
   CREATOR_ENTRIES: 'creator_entries',
@@ -19,7 +31,7 @@ module.exports = {
   OFFER_STATUS_PENDING: 'pending',
   OFFER_STATUS_REJECTED: 'rejected',
   OFFER_STATUS_WON: 'won',
-  FILES_PATH: 'public/',
+  DEV_FILES_PATH: path.resolve(__dirname, '..', 'public/'),
   SOCKET_CONNECTION: 'connection',
   SOCKET_SUBSCRIBE: 'subscribe',
   SOCKET_UNSUBSCRIBE: 'unsubscribe',
