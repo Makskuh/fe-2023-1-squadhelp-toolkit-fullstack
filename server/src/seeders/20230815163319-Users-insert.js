@@ -11,7 +11,7 @@ module.exports = {
         lastName: 'Buyer',
         displayName: 'Buyer',
         password: bcrypt.hashSync('buyer@gmail.com', SALT_ROUNDS),
-        email: 'buyer@gmail.com',
+        email: 'buyer1@gmail.com',
         role: CUSTOMER,
       },
       {
@@ -19,7 +19,7 @@ module.exports = {
         lastName: 'Creator',
         displayName: 'Creator',
         password: bcrypt.hashSync('creator@gmail.com', SALT_ROUNDS),
-        email: 'creator@gmail.com',
+        email: 'creator1@gmail.com',
         role: CREATOR,
       },
     ], {});
