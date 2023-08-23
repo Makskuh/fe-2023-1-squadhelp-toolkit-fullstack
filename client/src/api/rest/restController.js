@@ -37,26 +37,30 @@ export const getCustomersContests = data =>
     }
   );
 
-export const getActiveContests = ({
-  offset,
-  limit,
-  typeIndex,
-  contestId,
-  industry,
-  awardSort,
-  ownEntries,
-}) =>
-  http.get('contests/all', {
-    params: {
-      offset,
-      limit,
-      typeIndex,
-      contestId,
-      industry,
-      awardSort,
-      ownEntries,
+  export const getActiveContests = async ({
+    offset,
+    limit,
+    typeIndex,
+    contestId,
+    industry,
+    awardSort,
+    ownEntries,
+  }) => {
+    try {
+      return await http.post('contests/all', {
+          offset,
+          limit,
+          typeIndex,
+          contestId,
+          industry,
+          awardSort,
+          ownEntries,
+        }
+      );
+    } catch (error) {
+      throw error;
     }
-  });
+  };
 
 export const getContestById = ({ contestId }) =>
   http.get(`contests/${contestId}`,);

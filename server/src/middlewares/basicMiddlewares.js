@@ -49,7 +49,6 @@ module.exports.onlyForCreative = (req, res, next) => {
   } else {
     next();
   }
-
 };
 
 module.exports.onlyForCustomer = (req, res, next) => {
@@ -71,8 +70,9 @@ module.exports.canSendOffer = async (req, res, next) => {
       },
       attributes: ['status'],
     });
-    if (result.get({ plain: true }).status ===
-      CONSTANTS.CONTEST_STATUS_ACTIVE) {
+    if (
+      result.get({ plain: true }).status === CONSTANTS.CONTEST_STATUS_ACTIVE
+    ) {
       next();
     } else {
       return next(new RightsError());
@@ -80,7 +80,6 @@ module.exports.canSendOffer = async (req, res, next) => {
   } catch (e) {
     next(new ServerError());
   }
-
 };
 
 module.exports.onlyForCustomerWhoCreateContest = async (req, res, next) => {
@@ -118,4 +117,3 @@ module.exports.canUpdateContest = async (req, res, next) => {
     next(new ServerError());
   }
 };
-
