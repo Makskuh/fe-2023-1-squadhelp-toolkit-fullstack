@@ -24,12 +24,6 @@ router.post(
 );
 
 router.post(
-  '/dataForContest',
-  checkToken.checkToken,
-  contestController.dataForContest,
-);
-
-router.post(
   '/pay',
   checkToken.checkToken,
   basicMiddlewares.onlyForCustomer,

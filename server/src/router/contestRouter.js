@@ -14,6 +14,11 @@ contestRouter.post(
   contestController.getContests,
 );
 
+contestRouter.post(
+  '/dataForContest',
+  contestController.dataForContest,
+);
+
 contestRouter.put(
   '/:contestId',
   upload.updateContestFile,
