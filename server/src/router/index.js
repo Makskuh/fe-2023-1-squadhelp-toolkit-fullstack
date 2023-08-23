@@ -6,7 +6,8 @@ const checkToken = require('../middlewares/checkToken');
 const validators = require('../middlewares/validators');
 const upload = require('../utils/fileUpload');
 const contestRouter = require('./contestRouter');
-const chatRouter = require('./chatRouter')
+const chatRouter = require('./chatRouter');
+const userRouter = require('./userRouter')
 const router = express.Router();
 
 router.post(
@@ -20,26 +21,10 @@ router.post(
   validators.validateLogin,
   userController.login,
 );
-
+router.use('/',userRouter);
 router.use('/',checkToken.checkToken,chatRouter);
 router.use('/contests', checkToken.checkToken, contestRouter);
 
-
-
-router.post(
-  '/pay',
-  checkToken.checkToken,
-  basicMiddlewares.onlyForCustomer,
-  upload.uploadContestFiles,
-  basicMiddlewares.parseBody,
-  validators.validateContestCreation,
-  userController.payment,
-);
-
-router.post(
-  '/getUser',
-  checkToken.checkAuth,
-);
 
 router.get(
   '/downloadFile/:fileName',
@@ -47,26 +32,5 @@ router.get(
   contestController.downloadFile,
 );
 
-
-router.post(
-  '/changeMark',
-  checkToken.checkToken,
-  basicMiddlewares.onlyForCustomer,
-  userController.changeMark,
-);
-
-router.post(
-  '/updateUser',
-  checkToken.checkToken,
-  upload.uploadAvatar,
-  userController.updateUser,
-);
-
-router.post(
-  '/cashout',
-  checkToken.checkToken,
-  basicMiddlewares.onlyForCreative,
-  userController.cashout,
-);
 
 module.exports = router;
