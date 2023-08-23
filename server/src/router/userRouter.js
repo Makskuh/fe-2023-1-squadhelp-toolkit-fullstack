@@ -4,6 +4,8 @@ const checkToken = require('../middlewares/checkToken');
 const basicMiddlewares = require('../middlewares/basicMiddlewares');
 const upload = require('../utils/fileUpload');
 const validators = require('../middlewares/validators');
+
+
 userRouter.post(
   '/getUser',
   checkToken.checkAuth,
