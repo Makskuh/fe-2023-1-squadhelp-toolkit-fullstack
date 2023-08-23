@@ -38,4 +38,10 @@ contestRouter.get(
   contestController.getContestById
 );
 
+contestRouter.get(
+  '/downloadFile/:fileName',
+  contestController.downloadFile,
+);
+
+
 module.exports = contestRouter;
