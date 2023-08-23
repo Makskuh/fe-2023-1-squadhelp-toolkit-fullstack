@@ -5,8 +5,8 @@ export const loginRequest = (data) => http.post('login', data);
 export const getUser = () => http.post('getUser');
 export const updateContest = (data) =>
   http.put(`contests/${data.get('contestId')}`, data);
-export const setNewOffer = (data) => http.post('setNewOffer', data);
-export const setOfferStatus = (data) => http.post('setOfferStatus', data);
+export const setNewOffer = (data) => http.post('contests/setNewOffer', data);
+export const setOfferStatus = (data) => http.post('contests/setOfferStatus', data);
 export const downloadContestFile = (data) =>
   http.get(`downloadFile/${data.fileName}`);
 export const payMent = (data) => http.post('pay', data.formData);

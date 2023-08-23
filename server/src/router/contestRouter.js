@@ -3,32 +3,39 @@ const upload = require('../utils/fileUpload');
 const contestController = require('../controllers/contestController');
 const basicMiddlewares = require('../middlewares/basicMiddlewares');
 
-contestRouter.get(
-  '/customers',
-  contestController.getCustomersContests,
-);
+contestRouter.get('/customers', contestController.getCustomersContests);
 
 contestRouter.post(
   '/all',
   basicMiddlewares.onlyForCreative,
-  contestController.getContests,
+  contestController.getContests
+);
+
+contestRouter.post('/dataForContest', contestController.dataForContest);
+
+contestRouter.post(
+  '/setNewOffer',
+  upload.uploadLogoFiles,
+  basicMiddlewares.canSendOffer,
+  contestController.setNewOffer
 );
 
 contestRouter.post(
-  '/dataForContest',
-  contestController.dataForContest,
+  '/setOfferStatus',
+  basicMiddlewares.onlyForCustomerWhoCreateContest,
+  contestController.setOfferStatus
 );
 
 contestRouter.put(
   '/:contestId',
   upload.updateContestFile,
-  contestController.updateContest,
+  contestController.updateContest
 );
 
 contestRouter.get(
   '/:contestId',
   basicMiddlewares.canGetContest,
-  contestController.getContestById,
+  contestController.getContestById
 );
 
 module.exports = contestRouter;

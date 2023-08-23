@@ -49,21 +49,6 @@ router.get(
 
 
 router.post(
-  '/setNewOffer',
-  checkToken.checkToken,
-  upload.uploadLogoFiles,
-  basicMiddlewares.canSendOffer,
-  contestController.setNewOffer,
-);
-
-router.post(
-  '/setOfferStatus',
-  checkToken.checkToken,
-  basicMiddlewares.onlyForCustomerWhoCreateContest,
-  contestController.setOfferStatus,
-);
-
-router.post(
   '/changeMark',
   checkToken.checkToken,
   basicMiddlewares.onlyForCustomer,
