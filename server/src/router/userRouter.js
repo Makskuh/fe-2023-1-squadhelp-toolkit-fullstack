@@ -6,19 +6,19 @@ const upload = require('../utils/fileUpload');
 const validators = require('../middlewares/validators');
 
 
-userRouter.post(
+userRouter.get(
   '/getUser',
   checkToken.checkAuth,
 );
 
-userRouter.post(
+userRouter.put(
   '/changeMark',
   checkToken.checkToken,
   basicMiddlewares.onlyForCustomer,
   userController.changeMark,
 );
 
-userRouter.post(
+userRouter.put(
   '/updateUser',
   checkToken.checkToken,
   upload.uploadAvatar,

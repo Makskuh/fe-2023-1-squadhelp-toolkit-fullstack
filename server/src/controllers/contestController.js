@@ -11,7 +11,6 @@ module.exports.dataForContest = async (req, res, next) => {
   try {
     const { body: { characteristic1, characteristic2 } } = req;
     const types = [characteristic1, characteristic2, 'industry'].filter(Boolean);
-
     const characteristics = await db.Select.findAll({
       where: {
         type: {
@@ -130,6 +129,7 @@ module.exports.setNewOffer = async (req, res, next) => {
   }
   obj.userId = req.tokenData.userId;
   obj.contestId = req.body.contestId;
+  console.log(obj)
   try {
     const result = await contestQueries.createOffer(obj);
     delete result.contestId;

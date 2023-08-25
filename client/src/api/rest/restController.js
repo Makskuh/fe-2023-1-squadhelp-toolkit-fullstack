@@ -4,19 +4,19 @@ export const registerRequest = (data) => http.post('entrance/registration', data
 
 export const loginRequest = (data) => http.post('entrance/login', data);
 
-export const getUser = () => http.post('user/getUser');
+export const getUser = () => http.get('user/getUser');
 
 export const payMent = (data) => http.post('user/pay', data.formData);
 
-export const changeMark = (data) => http.post('user/changeMark', data);
+export const changeMark = (data) => http.put('user/changeMark', data);
 
 export const cashOut = (data) => http.post('user/cashout', data);
 
-export const updateUser = (data) => http.post('user/updateUser', data);
+export const updateUser = (data) => http.put('user/updateUser', data);
 
 export const getPreviewChat = () => http.post('chat/getPreview');
 
-export const getDialog = (data) => http.post('chat/getChat', data);
+export const getDialog = ({interlocutorId}) => http.get(`chat/${interlocutorId}`);
 
 export const newMessage = (data) => http.post('chat/newMessage', data);
 

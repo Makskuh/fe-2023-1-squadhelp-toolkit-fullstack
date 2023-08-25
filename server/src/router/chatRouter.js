@@ -1,7 +1,7 @@
 const chatRouter = require('express').Router();
 const chatController = require('../controllers/chatController');
 
-chatRouter.post('/getChat', chatController.getChat);
+chatRouter.get('/:interlocutorId', chatController.getChat);
 
 chatRouter.post('/newMessage', chatController.addMessage);
 
