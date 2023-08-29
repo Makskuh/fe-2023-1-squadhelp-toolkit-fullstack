@@ -7,13 +7,17 @@ chatRouter.post('/newMessage', chatController.addMessage);
 
 chatRouter.post('/getPreview', chatController.getPreview);
 
-chatRouter.post('/blackList', chatController.blackList);
+chatRouter.post('/deleteCatalog', chatController.deleteCatalog);
 
-chatRouter.post('/favorite', chatController.favoriteChat);
+chatRouter.put('/blackList', chatController.blackList);
+
+chatRouter.put('/favorite', chatController.favoriteChat);
+
+chatRouter.post('/getCatalogs',chatController.getCatalogs);
 
 chatRouter.post('/createCatalog', chatController.createCatalog);
 
-chatRouter.post('/updateNameCatalog', chatController.updateNameCatalog);
+chatRouter.put('/updateNameCatalog', chatController.updateNameCatalog);
 
 chatRouter.post('/addNewChatToCatalog', chatController.addNewChatToCatalog);
 

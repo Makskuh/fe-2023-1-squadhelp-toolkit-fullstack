@@ -230,7 +230,7 @@ module.exports.updateNameCatalog = async (req, res, next) => {
     const catalog = await Catalog.findOneAndUpdate({
       _id: req.body.catalogId,
       userId: req.tokenData.userId,
-    }, { catalogName: req.body.catalogName }, { new: true });
+    }, { catalogName: req.body.catalogName}, { new: true });
     res.send(catalog);
   } catch (err) {
     next(err);

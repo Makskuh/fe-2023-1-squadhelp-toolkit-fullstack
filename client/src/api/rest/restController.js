@@ -20,9 +20,9 @@ export const getDialog = ({interlocutorId}) => http.get(`chat/${interlocutorId}`
 
 export const newMessage = (data) => http.post('chat/newMessage', data);
 
-export const changeChatFavorite = (data) => http.post('chat/favorite', data);
+export const changeChatFavorite = (data) => http.put('chat/favorite', data);
 
-export const changeChatBlock = (data) => http.post('chat/blackList', data);
+export const changeChatBlock = (data) => http.put('chat/blackList', data);
 
 export const getCatalogList = (data) => http.post('chat/getCatalogs', data);
 
@@ -31,12 +31,12 @@ export const addChatToCatalog = (data) =>
 
 export const createCatalog = (data) => http.post('chat/createCatalog', data);
 
-export const deleteCatalog = (data) => http.post('chat/deleteCatalog', data);
+export const deleteCatalog = (data) => http.post('chat/deleteCatalog',data);
 
 export const removeChatFromCatalog = (data) =>
-  http.post('chat/removeChatFromCatalog', data);
+  http.post('chat/removeChatFromCatalog',data);
 
-export const changeCatalogName = (data) => http.post('chat/updateNameCatalog', data);
+export const changeCatalogName = (data) => http.put('chat/updateNameCatalog', data);
 
 export const dataForContest = (data) => http.post('contests/dataForContest', data);
 
