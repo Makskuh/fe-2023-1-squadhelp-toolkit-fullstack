@@ -170,7 +170,7 @@ module.exports.cashout = async (req, res, next) => {
                     THEN "balance"+${ req.body.sum }
                 WHEN "cardNumber"='${ CONSTANTS.SQUADHELP_BANK_NUMBER }' AND "expiry"='${ CONSTANTS.SQUADHELP_BANK_EXPIRY }' AND "cvc"='${ CONSTANTS.SQUADHELP_BANK_CVC }'
                     THEN "balance"-${ req.body.sum }
-                 END
+                END
                 `),
     },
     {

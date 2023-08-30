@@ -1,6 +1,7 @@
 import http from '../interceptor';
 
-export const registerRequest = (data) => http.post('entrance/registration', data);
+export const registerRequest = (data) =>
+  http.post('entrance/registration', data);
 
 export const loginRequest = (data) => http.post('entrance/login', data);
 
@@ -16,7 +17,8 @@ export const updateUser = (data) => http.put('user/updateUser', data);
 
 export const getPreviewChat = () => http.post('chat/getPreview');
 
-export const getDialog = ({interlocutorId}) => http.get(`chat/${interlocutorId}`);
+export const getDialog = ({ interlocutorId }) =>
+  http.get(`chat/${interlocutorId}`);
 
 export const newMessage = (data) => http.post('chat/newMessage', data);
 
@@ -31,25 +33,36 @@ export const addChatToCatalog = (data) =>
 
 export const createCatalog = (data) => http.post('chat/createCatalog', data);
 
-export const deleteCatalog = (data) => http.post('chat/deleteCatalog',data);
+export const deleteCatalog = (data) => http.delete('chat/deleteCatalog', {
+  params: {
+    catalogId: data.catalogId
+  }
+});
 
 export const removeChatFromCatalog = (data) =>
-  http.post('chat/removeChatFromCatalog',data);
+  http.delete('chat/removeChatFromCatalog', {
+    params: {
+      catalogId: data.catalogId,
+      chatId: data.chatId
+    },
+  });
 
-export const changeCatalogName = (data) => http.put('chat/updateNameCatalog', data);
+export const changeCatalogName = (data) =>
+  http.put('chat/updateNameCatalog', data);
 
-export const dataForContest = (data) => http.post('contests/dataForContest', data);
+export const dataForContest = (data) =>
+  http.post('contests/dataForContest', data);
 
 export const updateContest = (data) =>
   http.put(`contests/${data.get('contestId')}`, data);
 
 export const setNewOffer = (data) => http.post('contests/setNewOffer', data);
 
-export const setOfferStatus = (data) => http.post('contests/setOfferStatus', data);
+export const setOfferStatus = (data) =>
+  http.post('contests/setOfferStatus', data);
 
 export const downloadContestFile = (data) =>
   http.get(`contests/downloadFile/${data.fileName}`);
-
 
 export const getCustomersContests = (data) =>
   http.get('contests/customers', {

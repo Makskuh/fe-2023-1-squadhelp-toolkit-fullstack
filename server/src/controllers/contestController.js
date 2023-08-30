@@ -120,7 +120,9 @@ module.exports.updateContest = async (req, res, next) => {
 };
 
 module.exports.setNewOffer = async (req, res, next) => {
+
   const obj = {};
+  
   if (req.body.contestType === CONSTANTS.LOGO_CONTEST) {
     obj.fileName = req.file.filename;
     obj.originalFileName = req.file.originalname;
@@ -151,8 +153,7 @@ const rejectOffer = async (offerId, creatorId, contestId) => {
   return rejectedOffer;
 };
 
-const resolveOffer = async (
-  contestId, creatorId, orderId, offerId, priority, transaction) => {
+const resolveOffer = async (contestId, creatorId, orderId, offerId, priority, transaction) => {
   const finishedContest = await contestQueries.updateContestStatus({
     status: db.sequelize.literal(`   CASE
             WHEN "id"=${contestId}  AND "orderId"='${orderId}' THEN '${CONSTANTS.CONTEST_STATUS_FINISHED}'
@@ -190,21 +191,20 @@ const resolveOffer = async (
 };
 
 module.exports.setOfferStatus = async (req, res, next) => {
+  const {body: {offerId,creatorId,contestId,command,orderId,priority}} = req;
   let transaction;
-  if (req.body.command === 'reject') {
+  if (command === 'reject') {
     try {
-      const offer = await rejectOffer(req.body.offerId, req.body.creatorId,
-        req.body.contestId);
+      const offer = await rejectOffer(offerId,creatorId,contestId);
       res.send(offer);
     } catch (err) {
       next(err);
     }
-  } else if (req.body.command === 'resolve') {
+  } else if (command === 'resolve') {
     try {
       transaction = await db.sequelize.transaction();
-      const winningOffer = await resolveOffer(req.body.contestId,
-        req.body.creatorId, req.body.orderId, req.body.offerId,
-        req.body.priority, transaction);
+      const winningOffer = await resolveOffer(contestId,
+        creatorId, orderId, offerId,priority, transaction);
       res.send(winningOffer);
     } catch (err) {
       transaction.rollback();

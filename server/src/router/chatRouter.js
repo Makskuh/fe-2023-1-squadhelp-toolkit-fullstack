@@ -7,7 +7,7 @@ chatRouter.post('/newMessage', chatController.addMessage);
 
 chatRouter.post('/getPreview', chatController.getPreview);
 
-chatRouter.post('/deleteCatalog', chatController.deleteCatalog);
+chatRouter.delete('/deleteCatalog', chatController.deleteCatalog);
 
 chatRouter.put('/blackList', chatController.blackList);
 
@@ -21,6 +21,6 @@ chatRouter.put('/updateNameCatalog', chatController.updateNameCatalog);
 
 chatRouter.post('/addNewChatToCatalog', chatController.addNewChatToCatalog);
 
-chatRouter.post('/removeChatFromCatalog', chatController.removeChatFromCatalog);
+chatRouter.delete('/removeChatFromCatalog', chatController.removeChatFromCatalog);
 
 module.exports = chatRouter;
