@@ -11,8 +11,8 @@ function HowItWorksBody(props) {
     <div className={styles.container}>
       <HowDoesSquadhelpWork/>
       <WaysToUseSquadhelp/>
-      <LaunchingContest/>
       <NamingContestWork/>
+      <LaunchingContest/>
       <Questions/>
     </div>
   )
