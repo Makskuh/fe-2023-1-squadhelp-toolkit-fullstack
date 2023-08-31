@@ -5,7 +5,7 @@ const basicMiddlewares = require('../middlewares/basicMiddlewares');
 
 contestRouter.get('/customers', contestController.getCustomersContests);
 
-contestRouter.post(
+contestRouter.get(
   '/all',
   basicMiddlewares.onlyForCreative,
   contestController.getContests

@@ -15,7 +15,7 @@ export const cashOut = (data) => http.post('user/cashout', data);
 
 export const updateUser = (data) => http.put('user/updateUser', data);
 
-export const getPreviewChat = () => http.post('chat/getPreview');
+export const getPreviewChat = (data) => http.post('chat/getPreview', data);
 
 export const getDialog = ({ interlocutorId }) =>
   http.get(`chat/${interlocutorId}`);
@@ -73,23 +73,17 @@ export const getCustomersContests = (data) =>
     },
   });
 
-export const getActiveContests = ({
-  offset,
-  limit,
-  typeIndex,
-  contestId,
-  industry,
-  awardSort,
-  ownEntries,
-}) => {
-  return http.post('contests/all', {
-    offset,
-    limit,
-    typeIndex,
-    contestId,
-    industry,
-    awardSort,
-    ownEntries,
+export const getActiveContests = (data) => {
+  return http.get('contests/all', {
+    params: {
+    offset:data.offset,
+    limit: data.limit,
+    typeIndex: data.typeIndex,
+    contestId: data.contestId,
+    industry:data.industry,
+    awardSort:data.awardSort,
+    ownEntries:data.ownEntries
+    }
   });
 };
 
