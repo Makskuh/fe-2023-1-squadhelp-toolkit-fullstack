@@ -1,15 +1,16 @@
 import React from 'react';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
+import HowItWorksBody from '../../components/HowItWork components';
 
-function HowItWork(props) {
+function HowItWorks(props) {
   return (
     <div>
       <Header/>
-      
+      <HowItWorksBody/>
       <Footer/>
     </div>
   )
 }
 
-export default HowItWork;
+export default HowItWorks;
