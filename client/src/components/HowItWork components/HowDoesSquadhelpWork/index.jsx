@@ -2,7 +2,7 @@ import React from 'react';
 import constants from '../../../constants';
 import styles from './HowDoesSquad.module.sass';
 
-function HowDoesSquadhelpWork(props) {
+function HowDoesSquadhelpWork() {
   return (
     <article className={styles.container}>
       <section className={styles.infoWrapper}>
