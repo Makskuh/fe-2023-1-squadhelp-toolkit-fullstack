@@ -1,0 +1,55 @@
+$baseblue:#377dff
+$titlecolor: rgb(30, 32, 34)
+
+.container
+  margin-top: 50px
+  display: flex
+  flex-direction: column
+  .infoHeader 
+    align-self: center
+    text-align: center
+    margin-bottom: 70px
+    .ourWorks
+      font-size: 11px
+      background-color: rgba(55,125,255,.1)
+      color: $baseblue
+      padding: 10px 20px
+      border-radius: 20px
+    .title
+        font-size: 30px
+        margin: 20px 0 20px
+        color: rgb(30, 32, 34)
+
+.cardContainer 
+  display: flex
+  flex-direction: row
+  gap: 40px
+  .cardWrapper
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    width: 100%
+    border: 0.5px solid #e3e3e3
+    text-align: center
+    line-height: 1.6
+    padding: 60px 10px 70px
+    .cardTitle
+      font-size: 28px
+      color: rgb(30, 32, 34)
+      margin-bottom: 15px
+    .cardInfo
+      margin-bottom: 30px
+    .cardBtn 
+      align-self: center
+      width: 230px
+      font-weight: 500
+      margin-top: 20px
+      padding: 20px 20px
+      box-shadow: 0 4px 11px rgba(55,125,255,.35)
+      border: none
+      border-radius: 50px
+      color: white
+      background-color: $baseblue
+      transition: all 0.3s ease-in-out
+      &:hover 
+        transform: translateY(-5px)
