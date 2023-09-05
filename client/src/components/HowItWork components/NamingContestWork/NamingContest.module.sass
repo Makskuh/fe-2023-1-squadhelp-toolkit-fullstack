@@ -1,5 +1,5 @@
-$baseblue:#377dff
-  
+$baseblue: #377dff
+
 .container
   margin-top: 130px
   display: flex
@@ -13,16 +13,18 @@ $baseblue:#377dff
     color: rgb(30, 32, 34)
     .imgWrapper
       width: 100px
-    .imgCup
-      display: block
-      width: 100%
-      height: 100%
+      .imgCup
+        display: block
+        width: 100%
 
 .imgStepsContainer
   display: flex
   flex-direction: row
   justify-content: space-between
+  &
+    gap:80px
   .wrapperWorkingMan
+    align-self: center
     width: 600px
     .imgWorkingMan
       display: block
@@ -31,13 +33,36 @@ $baseblue:#377dff
     width: 600px
     display: flex
     flex-direction: column
-    justify-content: space-between
-    .stepContainer
+    gap:40px
+    .liStep
+      position: relative
       display: flex
       flex-direction: row
       align-items: center
-      padding: 32px
+      padding: 32px 20px
       border: 1px solid rgb(231, 234, 243)
+      &::before
+        content: ''
+        position: absolute
+        left: -35px
+        height: 1px
+        width: 30px
+        background-color: rgb(231, 234, 243)
+      &::after
+        content: ''
+        position: absolute
+        left: -35px
+        height: 200%
+        width: 1px
+        background-color: rgb(231, 234, 243)
+      &:first-child
+        &::after
+          height: 50%
+          top:50%
+      &:last-child
+        &::after
+          height: 50%
+          top: 0
       .numberStep
         padding-right: 20px
         font-size: 56px

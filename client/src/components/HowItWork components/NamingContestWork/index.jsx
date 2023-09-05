@@ -22,33 +22,33 @@ function NamingContestWork(props) {
             alt="support-man"
           />
         </div>
-        <div className={styles.stepsWrapper}>
-          <div className={styles.stepContainer}>
+        <ul className={styles.stepsWrapper}>
+          <li className={styles.liStep}>
             <span className={styles.numberStep}>1.</span>
             <p className={styles.textStep}>
               Fill out your Naming Brief and begin receiving name ideas in
               minutes
             </p>
-          </div>
-          <div className={styles.stepContainer}>
+          </li>
+          <li className={styles.liStep}>
             <span className={styles.numberStep}>2.</span>
             <p className={styles.textStep}>
               Rate the submissions and provide feedback to creatives. Creatives
               submit even more names based on your feedback.
             </p>
-          </div>
-          <div className={styles.stepContainer}>
+          </li>
+          <li className={styles.liStep}>
             <span className={styles.numberStep}>3.</span>
             <p className={styles.textStep}>
               Our team helps you test your favorite names with your target
               audience. We also assist with Trademark screening.
             </p>
-          </div>
-          <div className={styles.stepContainer}>
+          </li>
+          <li className={styles.liStep}>
             <span className={styles.numberStep}>4.</span>
             <p className={styles.textStep}>Pick a Winner. The winner gets paid for their submission.</p>
-          </div>
-        </div>
+          </li>
+        </ul>
       </section>
     </article>
   );
