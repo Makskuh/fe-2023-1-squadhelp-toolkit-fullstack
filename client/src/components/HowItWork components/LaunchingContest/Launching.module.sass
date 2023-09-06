@@ -1,4 +1,5 @@
 $baseblue: #377dff
+$titlecolor: rgb(30, 32, 34)
 
 .container
   margin-top: 50px 0
@@ -7,11 +8,13 @@ $baseblue: #377dff
   &
     gap: 50px
   .navUlContainer
+    align-self: flex-start
+    width: 250px
     display: flex
     flex-direction: column
-    padding: 22px 40px
+    padding: 22px 20px
     background-color: $baseblue
-    gap: 40px
+    gap: 30px
     border-radius: 10px
     .listNav
       .navLink
@@ -25,8 +28,59 @@ $baseblue: #377dff
 .ulWrapper
   display: flex
   flex-direction: column
+  width: 100%
+  gap: 20px
   .titleLaunching
+    padding: 5px 0
     font-size: 30px
     font-weight: 500
     color: $baseblue
-    text-align: center
+
+.liItem
+  display: flex
+  flex-direction: column
+  font-size: 16px
+  color: $titlecolor
+  .btnQuestion
+    border: 1px solid #e3e3e3
+    padding: 30px
+    display: flex
+    justify-content: space-between
+    z-index: 100
+    background-color: #fff
+    transition: all 0.3s
+    &:hover
+      background-color: #537cf718
+      color: #537df7
+      z-index: 2
+  .openArrow
+    font-size: 20px
+    color: $baseblue
+    animation: openArrow 1s
+    transform: rotate(90deg)
+  .closeArrow
+    font-size: 20px
+    color: $baseblue
+  .openAnswer
+    line-height: 1.7
+    border: 1px solid #e3e3e3
+    border-top: 0
+    padding: 15px 25px
+    z-index: -100
+    animation: open 1s
+    z-index: 0
+
+@keyframes open
+  0%
+    opacity: 0
+    transform: translateY(-100%)
+  50%
+    opacity: 0.6
+  100%
+    transform: translateY(0)
+@keyframes openArrow
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(90deg)
+// without close keyframe !!!!

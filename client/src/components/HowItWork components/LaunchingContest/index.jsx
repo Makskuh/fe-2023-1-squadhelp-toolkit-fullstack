@@ -1,28 +1,29 @@
 import React from 'react';
 import styles from './Launching.module.sass';
-
-const listLaunching = <li>hello</li>
+import NavBarContest from './NavBarContest';
+import ListItem from './ListItem';
+import { useState } from 'react';
+import launchingContestData from './ListItem/dataForLaunchingContest';
 
 function LaunchingContest(props) {
+  const [dataLaunching, setDataLaunching] = useState(
+    launchingContestData.map((value) => ({ ...value, isOpen: false }))
+  );
+  const handleClick = (index) => {
+    const dataWithOpenContests = dataLaunching.map((value, ind) => {
+      return {
+        ...value,
+        isOpen: index === ind ? !value.isOpen : value.isOpen,
+      };
+    });
+    setDataLaunching(dataWithOpenContests);
+  };
   return (
     <article className={styles.container}>
-      <ul className={styles.navUlContainer}>
-        <li className={styles.listNav}>
-          <a className={styles.navLink} href="#">Launching A Contest</a>
-        </li>
-        <li className={styles.listNav}>
-          <a className={styles.navLink} href="#">Buying From Marketplace</a>
-        </li>
-        <li className={styles.listNav}>
-          <a className={styles.navLink} href="#">Managed Contests</a>
-        </li>
-        <li className={styles.listNav}>
-          <a className={styles.navLink} href="#">For Creatives</a>
-        </li>
-      </ul>
+      <NavBarContest />
       <div className={styles.ulWrapper}>
         <h2 className={styles.titleLaunching}>Launching A Contest</h2>
-        <ul>{listLaunching}</ul>
+        <ListItem dataContest={dataLaunching} handleClick={handleClick} />
       </div>
     </article>
   );
