@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './GetStarted.module.sass';
+import constants from '../../../constants';
+
 function GetStarted() {
   return (
     <article className={styles.container}>
@@ -13,22 +15,25 @@ function GetStarted() {
       </div>
       <div className={styles.cardContainer}>
         <div className={styles.cardWrapper}>
+          <img className={styles.imgGetStarted} src={`${constants.STATIC_IMAGES_PATH}howitworks/stars.svg`} alt="stars" />
           <p>
-            <span className={styles.cardInfo}>4.9 out of 5 stars</span> from
+            <span className={styles.importantInfo}>4.9 out of 5 stars</span> from
             25,000+ customers.
           </p>
         </div>
         <div className={styles.cardWrapper}>
+        <img className={styles.imgGetStarted} src={`${constants.STATIC_IMAGES_PATH}howitworks/img2(1).webp`} alt="people" />
           <p>
             Our branding community stands
-            <span className={styles.cardImportantInfo}>200,000+</span> strong.
+            <span className={styles.importantInfo}> 200,000+</span> strong.
           </p>
         </div>
         <div className={styles.cardWrapper}>
+        <img className={styles.imgGetStarted} src={`${constants.STATIC_IMAGES_PATH}howitworks/sharing-files.svg`} alt="file-icon" />
           <p>
-            <span className={styles.cardImportantInfo}>140+ Industries</span>
+            <span className={styles.importantInfo}>140+ Industries</span>
             supported across more than
-            <span className={styles.cardImportantInfo}>85 countries</span> – and
+            <span className={styles.importantInfo}>85 countries</span> – and
             counting.
           </p>
         </div>
