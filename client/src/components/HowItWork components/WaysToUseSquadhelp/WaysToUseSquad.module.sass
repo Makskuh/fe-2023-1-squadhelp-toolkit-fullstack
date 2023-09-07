@@ -2,9 +2,18 @@ $baseblue:#377dff
 $titlecolor: rgb(30, 32, 34)
 
 .container
+  position: relative
   margin-top: 50px
   display: flex
   flex-direction: column
+  &::before
+    position: absolute
+    content: ''
+    width: 150vw
+    height: 1px
+    background-color: #b4b4b4
+    bottom: -50px
+    left: -23%
   .infoHeader 
     align-self: center
     text-align: center

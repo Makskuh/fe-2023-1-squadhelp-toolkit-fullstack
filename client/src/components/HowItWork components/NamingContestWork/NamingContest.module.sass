@@ -4,6 +4,15 @@ $baseblue: #377dff
   margin: 130px 0
   display: flex
   flex-direction: column
+  position: relative
+  &::before
+    position: absolute
+    content: ''
+    width: 150vw
+    height: 1px
+    background-color: #b4b4b4
+    bottom: -50px
+    left: -23%
   .headerContainer
     display: flex
     flex-direction: column
@@ -22,7 +31,7 @@ $baseblue: #377dff
   flex-direction: row
   justify-content: space-between
   &
-    gap:80px
+    gap: 80px
   .wrapperWorkingMan
     align-self: center
     width: 600px
@@ -33,7 +42,7 @@ $baseblue: #377dff
     width: 600px
     display: flex
     flex-direction: column
-    gap:40px
+    gap: 40px
     .liStep
       position: relative
       display: flex
@@ -58,7 +67,7 @@ $baseblue: #377dff
       &:first-child
         &::after
           height: 50%
-          top:50%
+          top: 50%
       &:last-child
         &::after
           height: 50%

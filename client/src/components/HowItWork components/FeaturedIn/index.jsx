@@ -11,26 +11,30 @@ function FeaturedIn() {
       <div className={styles.imgWrapper}>
         <div className={styles.wrapperImg}>
           <img
+            className={styles.img}
             src={`${constants.STATIC_IMAGES_PATH}howitworks/forbes.png`}
-            alt=""
+            alt="forbes"
           />
         </div>
         <div className={styles.wrapperImg}>
           <img
+            className={styles.img}
             src={`${constants.STATIC_IMAGES_PATH}howitworks/tnw.png`}
-            alt=""
+            alt="tnw"
           />
         </div>
         <div className={styles.wrapperImg}>
           <img
+            className={styles.img}
             src={`${constants.STATIC_IMAGES_PATH}howitworks/chicago.png`}
-            alt=""
+            alt="chicago"
           />
         </div>
         <div className={styles.wrapperImg}>
           <img
+            className={styles.img}
             src={`${constants.STATIC_IMAGES_PATH}howitworks/mash.png`}
-            alt=""
+            alt="mash"
           />
         </div>
       </div>
