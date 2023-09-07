@@ -6,6 +6,7 @@ import NamingContestWork from './NamingContestWork';
 import Questions from './Questions';
 import WaysToUseSquadhelp from './WaysToUseSquadhelp';
 import GetStarted from './ReadyToGetStarted';
+import FeaturedIn from './FeaturedIn';
 function HowItWorksBody(props) {
   return (
     <div className={styles.container}>
@@ -15,6 +16,7 @@ function HowItWorksBody(props) {
       <LaunchingContest/>
       <GetStarted/>
       <Questions/>
+      <FeaturedIn/>
     </div>
   )
 }
