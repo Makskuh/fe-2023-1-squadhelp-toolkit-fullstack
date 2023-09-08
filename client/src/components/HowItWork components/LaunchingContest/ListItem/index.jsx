@@ -10,7 +10,9 @@ function ListItem({ dataContest, handleClick }) {
           className={styles.btnQuestion}
         >
           {value.question}
-          <span className={value.isOpen ?styles.openArrow: styles.closeArrow }>➜</span>
+          <span className={value.isOpen ? styles.openArrow : styles.closeArrow}>
+            ➜
+          </span>
         </button>
         {value.isOpen && <p className={styles.openAnswer}>{value.answer}</p>}
       </li>
