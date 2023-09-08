@@ -1,8 +1,7 @@
 .backgroungImg
   position: relative
-  left: -300px
   width: 100vw
-  left: -22%
+  left: -21%
   background: linear-gradient(to right, #43c6ac, #191654, #963d91)
   // background-image: url('./bgc-img.jpg')
   // background-repeat: no-repeat
@@ -60,3 +59,18 @@
     .importantInfo
       font-weight: bold
       color: #000
+
+@media screen and (max-width:1024px)
+  .backgroungImg
+    left: -8%
+@media screen and (max-width:578px)
+  .backgroungImg
+    left: -8%
+  .cardContainer
+    align-items: center
+    flex-direction: column
+    gap: 20px
+    .cardWrapper
+      &:not(:first-child)
+        &::before
+          width: 0

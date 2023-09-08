@@ -1,12 +1,14 @@
-$baseblue:#377dff
-$text-color:#77838f
-  
-  
+$baseblue: #377dff
+$text-color: #77838f
+
 .container
   color: $text-color
   flex-direction: column
   justify-content: flex-start
   align-items: center
   margin: 5% 15% 0
+  position: relative
 
-
+@media screen and (max-width:1024px)
+  .container
+    margin: 5% 7% 0 7%

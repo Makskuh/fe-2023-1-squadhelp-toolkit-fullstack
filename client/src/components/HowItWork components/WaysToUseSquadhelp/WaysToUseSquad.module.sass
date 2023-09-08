@@ -1,20 +1,19 @@
-$baseblue:#377dff
+$baseblue: #377dff
 $titlecolor: rgb(30, 32, 34)
 
 .container
-  position: relative
   margin-top: 50px
   display: flex
   flex-direction: column
+  position: relative
   &::before
     position: absolute
     content: ''
-    width: 150vw
+    width: 100%
     height: 1px
+    top: -20px
     background-color: #b4b4b4
-    bottom: -50px
-    left: -23%
-  .infoHeader 
+  .infoHeader
     align-self: center
     text-align: center
     margin-bottom: 70px
@@ -25,11 +24,11 @@ $titlecolor: rgb(30, 32, 34)
       padding: 10px 20px
       border-radius: 20px
     .title
-        font-size: 30px
-        margin: 20px 0 20px
-        color: rgb(30, 32, 34)
+      font-size: 30px
+      margin: 20px 0 20px
+      color: rgb(30, 32, 34)
 
-.cardContainer 
+.cardContainer
   display: flex
   flex-direction: row
   gap: 40px
@@ -41,14 +40,14 @@ $titlecolor: rgb(30, 32, 34)
     border: 0.5px solid #e3e3e3
     text-align: center
     line-height: 1.6
-    padding: 60px 10px 70px
+    padding: 60px 10px 60px
     .cardTitle
       font-size: 28px
       color: rgb(30, 32, 34)
       margin-bottom: 15px
     .cardInfo
       margin-bottom: 30px
-    .cardBtn 
+    .cardBtn
       align-self: center
       width: 230px
       font-weight: 500
@@ -60,6 +59,12 @@ $titlecolor: rgb(30, 32, 34)
       color: white
       background-color: $baseblue
       transition: all 0.3s ease-in-out
-      &:hover 
+      &:hover
         transform: translateY(-5px)
 
+@media screen and (max-width:1024px)
+  .cardContainer
+    display: flex
+    flex-direction: column
+    .cardWrapper
+      padding: 10px

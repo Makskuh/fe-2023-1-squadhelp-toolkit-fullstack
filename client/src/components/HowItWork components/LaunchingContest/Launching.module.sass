@@ -74,9 +74,7 @@ $titlecolor: rgb(30, 32, 34)
 @keyframes open
   0%
     opacity: 0
-    transform: translateY(-100%)
-  50%
-    opacity: 0.6
+    transform: translateY(-50%)
   100%
     transform: translateY(0)
 @keyframes openArrow
@@ -85,3 +83,9 @@ $titlecolor: rgb(30, 32, 34)
   100%
     transform: rotate(90deg)
 // without close keyframe !!!!
+
+@media screen and (max-width:1024px)
+  .container
+    flex-direction: column
+    .navUlContainer
+      align-self: center

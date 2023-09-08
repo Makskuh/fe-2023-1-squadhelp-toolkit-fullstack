@@ -8,12 +8,12 @@ $baseblue: #377dff
   &::before
     position: absolute
     content: ''
-    width: 150vw
+    width: 100%
     height: 1px
     background-color: #b4b4b4
     bottom: -50px
-    left: -23%
   .headerContainer
+    text-align: center
     display: flex
     flex-direction: column
     align-items: center
@@ -80,3 +80,15 @@ $baseblue: #377dff
         align-items: center
         font-size: 16px
         line-height: 2.2
+  
+@media screen and (max-width:1024px)
+  .imgStepsContainer
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    .wrapperWorkingMan
+      width: 300px
+    .stepsWrapper
+      width: 80%
+      .liStep
+        padding: 20px 10px
