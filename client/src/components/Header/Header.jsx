@@ -48,6 +48,11 @@ class Header extends React.Component {
                 </Link>
               </li>
               <li>
+                <Link to="/eventstimer" style={{ textDecoration: 'none' }}>
+                  <span>Events Timer</span>
+                </Link>
+              </li>
+              <li>
                 <Link to="/account" style={{ textDecoration: 'none' }}>
                   <span>My Account</span>
                 </Link>
