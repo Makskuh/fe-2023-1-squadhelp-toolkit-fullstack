@@ -1,6 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Form, Formik, Field } from 'formik';
+import styles from './EventsForm.module.sass'
 const initialState = {
   eventText: '',
   date: '',
@@ -8,26 +8,24 @@ const initialState = {
   remind: ''
 };
 
-const EventsForm = ({ createTaskAction }) => {
+const EventsForm = ({ createEventsActions }) => {
   const submitHandler = (values, formikBag) => {
     formikBag.resetForm();
   };
 
   return (
     <Formik initialValues={initialState} onSubmit={submitHandler}>
-      <Form>
-        <Field name='eventText' />
-        <Field name='date'/>
-        <Field name='time'/>
-        <Field name='remind'/>
+      <Form className={styles.eventsForm}>
+        <Field name='eventText' placeholder='Event Text'/>
+        <Field name='date' placeholder='Date to event' type='date'/>
+        <Field name='time' placeholder='Time to event' type='time'/>
+        <Field name='remind' placeholder='Remind to event' type='time'/>
         <button type='submit'>Add a new event</button>
       </Form>
     </Formik>
   );
 };
 
-const mDtP = (dispatch) => ({
-  createTaskAction: (taskText) => dispatch(),
-});
 
-export default connect(null, mDtP)(EventsForm);
+
+export default EventsForm;
