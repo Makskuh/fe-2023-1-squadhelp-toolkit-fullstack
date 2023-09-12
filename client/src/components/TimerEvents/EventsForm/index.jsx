@@ -31,7 +31,7 @@ const EventsForm = (props) => {
         </label>
         <label>
           Time to Event
-          <Field name="time" placeholder="Time to event" type="time" />
+          <Field name="time" placeholder="Time to event" type="time"/>
         </label>
         <label>
           Remind me to Event
