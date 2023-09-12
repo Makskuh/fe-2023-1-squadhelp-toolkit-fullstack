@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const TIMER_EVENTS = 'todo';
+const TIMER_EVENTS = 'timerevents';
 
 const initialState = {
   events: []
@@ -13,7 +13,7 @@ const eventSlice = createSlice({
     createEvent: (state, action) => {
       const newEvent = {
         id: Date.now(),
-        body: action.payload,
+        events: action.payload,
       }
       state.events.push(newEvent)
     },
