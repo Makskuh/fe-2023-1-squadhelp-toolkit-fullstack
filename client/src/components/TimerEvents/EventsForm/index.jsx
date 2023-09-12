@@ -27,7 +27,7 @@ const EventsForm = (props) => {
         </label>
         <label>
           Date to Event
-          <Field name="date" placeholder="Date to event" type="date" />
+          <Field name="date" placeholder="Date to event" type="date"/>
         </label>
         <label>
           Time to Event
@@ -35,7 +35,7 @@ const EventsForm = (props) => {
         </label>
         <label>
           Remind me to Event
-          <Field name="remind" placeholder="Remind to event" type="time" />
+          <Field name="remind" placeholder="Remind to event" type="remind" />
         </label>
         <button type="submit">Add a new event</button>
       </Form>
