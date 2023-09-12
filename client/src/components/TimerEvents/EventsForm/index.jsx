@@ -1,11 +1,13 @@
 import React from 'react';
 import { Form, Formik, Field } from 'formik';
-import styles from './EventsForm.module.sass'
+import styles from './EventsForm.module.sass';
+import { createEvent } from '../../../store/slices/eventsSlice';
+
 const initialState = {
   eventText: '',
   date: '',
   time: '',
-  remind: ''
+  remind: '',
 };
 
 const EventsForm = ({ createEventsActions }) => {
@@ -16,16 +18,14 @@ const EventsForm = ({ createEventsActions }) => {
   return (
     <Formik initialValues={initialState} onSubmit={submitHandler}>
       <Form className={styles.eventsForm}>
-        <Field name='eventText' placeholder='Event Text'/>
-        <Field name='date' placeholder='Date to event' type='date'/>
-        <Field name='time' placeholder='Time to event' type='time'/>
-        <Field name='remind' placeholder='Remind to event' type='time'/>
-        <button type='submit'>Add a new event</button>
+        <Field name="eventText" placeholder="Event Text" />
+        <Field name="date" placeholder="Date to event" type="date" />
+        <Field name="time" placeholder="Time to event" type="time" />
+        <Field name="remind" placeholder="Remind to event" type="time" />
+        <button type="submit">Add a new event</button>
       </Form>
     </Formik>
   );
 };
-
-
 
 export default EventsForm;
