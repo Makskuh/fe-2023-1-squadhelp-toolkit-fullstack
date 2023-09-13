@@ -1,8 +1,10 @@
 import * as yup from 'yup';
+const today = new Date();
+today.setHours(0, 0, 0, 0);
 
-export const TODO_TASK_SCHEMA = yup.object({
-  eventText: yup.required(),
-  date: yup.date.min(new Date.now()).required(),
-  time: yup.required().positive(),
-  remind: ''
+export const EVENT_SCHEMA = yup.object({
+  eventText: yup.string().required(),
+  date: yup.date().min(today, 'Date cannot be in the past').required(),
+  time: yup.string().required(),
+  remind: '',
 });

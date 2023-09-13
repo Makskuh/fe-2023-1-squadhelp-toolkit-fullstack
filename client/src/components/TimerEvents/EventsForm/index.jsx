@@ -3,7 +3,7 @@ import { Form, Formik, Field } from 'formik';
 import styles from './EventsForm.module.sass';
 import { createEvent } from '../../../store/slices/eventsSlice';
 import { useDispatch } from 'react-redux';
-
+import { EVENT_SCHEMA } from '../../../utils/validators/eventsValidatorSchema';
 const initialState = {
   eventText: '',
   date: '',
@@ -17,27 +17,54 @@ const EventsForm = (props) => {
     dispatch(createEvent(values));
     formikBag.resetForm();
   };
-
   return (
-    <Formik initialValues={initialState} onSubmit={submitHandler}>
+    <Formik
+      initialValues={initialState}
+      onSubmit={submitHandler}
+      validationSchema={EVENT_SCHEMA}
+    >
       <Form className={styles.eventsForm}>
-        <label>
+        <label className={styles.titleField}>
           Event Text
-          <Field name="eventText" placeholder="Event Text" />
+          <Field
+            name="eventText"
+            placeholder="Event Text"
+            className={styles.field}
+            required
+          />
         </label>
-        <label>
-          Date to Event
-          <Field name="date" placeholder="Date to event" type="date"/>
+        <label className={styles.titleField}>
+          Date of the Event
+          <Field
+            name="date"
+            placeholder="Date to event"
+            type="date"
+            className={styles.field}
+            required
+          />
         </label>
-        <label>
-          Time to Event
-          <Field name="time" placeholder="Time to event" type="time"/>
+        <label className={styles.titleField}>
+          Event time
+          <Field
+            name="time"
+            placeholder="Time to event"
+            type="time"
+            className={styles.field}
+            required
+          />
         </label>
-        <label>
-          Remind me to Event
-          <Field name="remind" placeholder="Remind to event" type="remind" />
+        <label className={styles.titleField}>
+          Remind to Event
+          <Field
+            name="remind"
+            placeholder="Remind to event"
+            type="remind"
+            className={styles.field}
+          />
         </label>
-        <button type="submit">Add a new event</button>
+        <button type="submit" className={styles.submitBtn}>
+          Add a new event
+        </button>
       </Form>
     </Formik>
   );

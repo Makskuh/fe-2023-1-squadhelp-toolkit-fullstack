@@ -3,18 +3,38 @@
   flex-direction: column
   padding: 30px 30px
   border: solid 1px #b1b1b1
+  width: 80%
   .titleWrapper
     display: flex
     flex-direction: row
     margin-bottom: 20px
     .title
       font-size: 25px
-    
+
 .liEvent
-  border: solid 1px #b1b1b1
-  padding: 5px
+  position: relative
   display: flex
+  border: solid 2px #b1b1b1
+  background-color: #d9d9d9
   flex-direction: row
   justify-content: space-between
-  background-color: #e5fdcb
   margin-bottom: 20px
+  overflow: hidden
+  padding: 10px
+  .endLeftTime
+    z-index: 20
+  .textEvent
+    z-index: 20
+  .leftTime
+    z-index: 20
+  .progressBar
+    left: 0
+    top: 0
+    z-index: 0
+    position: absolute
+    width: 0%
+    height: 100%
+    background-color: #377dff
+    -webkit-box-shadow: -2px 0px 23px 12px rgba(55,125,255,1)
+    -moz-box-shadow: -2px 0px 23px 12px rgba(55,125,255,1)
+    box-shadow: -2px 0px 23px 12px rgba(55,125,255,1)
