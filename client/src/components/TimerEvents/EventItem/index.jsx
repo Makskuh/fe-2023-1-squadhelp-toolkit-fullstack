@@ -33,19 +33,19 @@ function EventItem({ event, id }) {
     }, 1000);
     return () => clearInterval(intervalEvents);
   }, [timerTime]);
-
+  const leftTime = !timerTime ? (
+    <span className={styles.endLeftTime}>End</span>
+  ) : (
+    <p className={styles.leftTime}>{`${
+      timerTime.days ? timerTime.days + 'd' : ''
+    } ${timerTime.hours ? timerTime.hours + 'h' : ''} ${
+      timerTime.minutes ? timerTime.minutes + 'm' : ''
+    } ${timerTime.seconds ? timerTime.seconds + 's' : ''}`}</p>
+  );
   return (
     <li className={styles.liEvent}>
       <p className={styles.textEvent}>{eventText}</p>
-      {!timerTime ? (
-        <span className={styles.endLeftTime}>End</span>
-      ) : (
-        <p className={styles.leftTime}>{`${
-          timerTime.days ? timerTime.days + 'd' : ''
-        } ${timerTime.hours ? timerTime.hours + 'h' : ''} ${
-          timerTime.minutes ? timerTime.minutes + 'm' : ''
-        } ${timerTime.seconds ? timerTime.seconds + 's' : ''}`}</p>
-      )}
+      {leftTime}
       <div className={styles.progressBar} style={progressBar}></div>
       {/* <button onClick={() => dispatch(deleteEvent(event.id))}>Delete</button> */}
     </li>
