@@ -1,27 +1,24 @@
 import React from 'react';
-import styles from '../EventsList/EventsList.module.sass';
+import styles from './EventItem.module.sass';
 // import { deleteEvent, updateEvent } from '../../../store/slices/eventsSlice';
+// import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
-function EventItem({ event, id }) {
+function EventItem({ event }) {
   const {
-    events: { date, time, eventText },
+    events: { date, time, eventText, remind },
   } = event;
   const [timerTime, setTimerTime] = useState({});
   const [startTime, setCurrentTime] = useState(new Date().getTime());
   const [refDate, setRefDate] = useState(new Date(`${date}T${time}`).getTime());
-  const [progressBar, setProgressBar] = useState({ width: '0' });
   const [distance, setDistance] = useState(refDate - startTime);
   const fullTime = refDate - startTime;
   const getProgress = ((fullTime - distance) / fullTime) * 100;
-  const now = new Date().getTime();
+
   useEffect(() => {
-    if (distance < 0) {
-      setProgressBar({ width: '100%' });
+    if (distance <= 0) {
       return setTimerTime(null);
     }
-    setProgressBar({ width: `${getProgress}%` });
     const intervalEvents = setInterval(() => {
-      setDistance(refDate - now);
       setTimerTime({
         days: Math.floor(distance / (1000 * 60 * 60 * 24)),
         hours: Math.floor(
@@ -30,24 +27,47 @@ function EventItem({ event, id }) {
         minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
         seconds: Math.floor((distance % (1000 * 60)) / 1000),
       });
+      setDistance(refDate - new Date().getTime());
     }, 1000);
     return () => clearInterval(intervalEvents);
   }, [timerTime]);
-  const leftTime = !timerTime ? (
-    <span className={styles.endLeftTime}>End</span>
+  const reminder = !timerTime ? (
+    <div className={styles.reminder}>End</div>
+  ) : timerTime.days === 0 &&
+    timerTime.hours === 0 &&
+    timerTime.minutes <= remind ? (
+    <div className={styles.reminder}>Less than {remind} minutes left</div>
   ) : (
-    <p className={styles.leftTime}>{`${
-      timerTime.days ? timerTime.days + 'd' : ''
-    } ${timerTime.hours ? timerTime.hours + 'h' : ''} ${
-      timerTime.minutes ? timerTime.minutes + 'm' : ''
-    } ${timerTime.seconds ? timerTime.seconds + 's' : ''}`}</p>
+    ''
   );
+  const leftTime = !timerTime
+    ? ''
+    : `${timerTime.days ? timerTime.days + 'd' : ''} 
+${timerTime.hours ? timerTime.hours + 'h' : ''} ${
+        timerTime.minutes ? timerTime.minutes + 'm' : ''
+      } ${
+        timerTime.seconds &&
+        timerTime.days <= 1 &&
+        timerTime.hours <= 1 &&
+        timerTime.minutes <= 10
+          ? timerTime.seconds + 's'
+          : ''
+      }`;
   return (
     <li className={styles.liEvent}>
       <p className={styles.textEvent}>{eventText}</p>
-      {leftTime}
-      <div className={styles.progressBar} style={progressBar}></div>
-      {/* <button onClick={() => dispatch(deleteEvent(event.id))}>Delete</button> */}
+      <p className={styles.leftTime}>{leftTime}</p>
+      <div
+        className={styles.progressBar}
+        style={{ width: `${getProgress}%` }}
+      ></div>
+      {reminder}
+      {/* <button
+        className={styles.deleteBtn}
+        onClick={() => dispatch(deleteEvent(event.id))}
+      >
+        X
+      </button> */}
     </li>
   );
 }

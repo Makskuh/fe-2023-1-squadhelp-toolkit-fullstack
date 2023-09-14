@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import EventItem from '../EventItem';
 import constants from '../../../constants';
 function EventsList({ events }) {
-  const sortEvents = events.slice().sort((a, b) => {
-    const dateA = new Date(`${a.events.date}T${a.events.time}`);
-    const dateB = new Date(`${b.events.date}T${b.events.time}`);
-    return dateA - dateB;
+  const sortEvents = events.slice(0).sort((a, b) => {
+    const dateBefore = new Date(`${a.events.date}T${a.events.time}`);
+    const dateAfter = new Date(`${b.events.date}T${b.events.time}`);
+    return dateBefore - dateAfter;
   });
   return (
-    <div className={styles.ListWrapper}>
+    <div className={styles.listWrapper}>
       <div className={styles.titleWrapper}>
         <h1 className={styles.title}>Event Timer</h1>
         <div className={styles.clockWrapper}>

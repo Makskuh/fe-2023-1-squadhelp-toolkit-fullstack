@@ -10,7 +10,8 @@ const initialState = {
   time: '',
   remind: '',
 };
-
+const getHours = new Date().getHours()
+const getMinutes = new Date().getMinutes() < 10 ? `0${new Date().getMinutes()}` : new Date().getMinutes()
 const EventsForm = (props) => {
   const dispatch = useDispatch();
   const submitHandler = (values, formikBag) => {
@@ -51,6 +52,7 @@ const EventsForm = (props) => {
             type="time"
             className={styles.field}
             required
+            min={`${getHours}:${getMinutes}`}
           />
         </label>
         <label className={styles.titleField}>
@@ -58,8 +60,11 @@ const EventsForm = (props) => {
           <Field
             name="remind"
             placeholder="Remind to event"
-            type="remind"
+            type="number"
+            min="0"
+            max="60"
             className={styles.field}
+            required
           />
         </label>
         <button type="submit" className={styles.submitBtn}>
