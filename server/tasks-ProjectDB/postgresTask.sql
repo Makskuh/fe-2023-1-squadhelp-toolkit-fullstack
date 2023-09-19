@@ -1,0 +1,8 @@
+
+
+CREATE TABLE messages (
+  ID SERIAL PRIMARY KEY ,
+  BODY VARCHAR(1000)
+  conversation INT FOREIGN KEY REFERENCES conversation(id)
+  sender INT FOREIGN KEY REFERENCES Users(id)
+)
