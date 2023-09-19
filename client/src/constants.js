@@ -38,6 +38,11 @@ export default {
     REGISTER: 'REGISTER',
     LOGIN: 'LOGIN',
   },
+  BTN_DATA: [
+    { data: 'The Domain should exactly match the name' },
+    { data: 'But minor variations are allowed ', isRecommend: true },
+    { data: 'I am only looking for a name,not a Domain' },
+  ],
   HEADER_ANIMATION_TEXT: [
     'a Company',
     'a Brand',
