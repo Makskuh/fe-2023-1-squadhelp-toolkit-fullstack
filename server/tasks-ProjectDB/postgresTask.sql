@@ -5,23 +5,24 @@ CREATE TABLE messages (
   "conversation_id" INT REFERENCES "conversation"(id),
   created_at TIMESTAMP NOT NULL DEFAULT current_timestamp,
   updated_at TIMESTAMP NOT NULL DEFAULT current_timestamp
-)
-
-
+) 
 CREATE TABLE "conversation" (
   id SERIAL PRIMARY KEY,
-  participants INT[] NOT NULL,
-  blacklist BOOLEAN[] NOT NULL,
-  favoritelist BOOLEAN[]  NOT NULL,
+  participants INT [] NOT NULL,
+  blacklist BOOLEAN [] NOT NULL,
+  favoritelist BOOLEAN [] NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT current_timestamp,
   updated_at TIMESTAMP NOT NULL DEFAULT current_timestamp
-)
-
+) 
 CREATE TABLE "Catalog" (
   id SERIAL PRIMARY KEY,
   "catalogName" TEXT,
   "userId" INT REFERENCES "Users"(id),
   "conversation_id" INT REFERENCES "conversation"(id)
 )
+-- ==================== TASK № 9 ==============================
 
-SELECT  * FROM messages
+SELECT count(*),role
+FROM "Users"
+GROUP BY role
+
