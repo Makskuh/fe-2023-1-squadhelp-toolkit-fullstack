@@ -26,3 +26,23 @@ SELECT count(*),role
 FROM "Users"
 GROUP BY role
 
+-- ==================== TASK № 10 ==============================
+
+UPDATE "Users" u 
+SET balance = u.balance + (sum * 0.1)
+FROM (
+  SELECT "userId" usid,SUM(c.prize) sum
+  FROM "Contests" c
+  WHERE c."createdAt" >= '2022-12-25' AND c."createdAt" <= '2023-12-30'
+  GROUP BY c."userId"
+) AS uc
+WHERE u.role = 'customer' AND u.id = uc.usid;
+
+UPDATE "Users" SET balance= 600
+WHERE role = 'customer'
+
+SELECT * FROM "Users"
+
+SELECT * FROM "Contests"
+
+-- ==================== TASK № 11 ==============================
