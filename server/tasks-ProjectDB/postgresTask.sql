@@ -41,8 +41,21 @@ WHERE u.role = 'customer' AND u.id = uc.usid;
 UPDATE "Users" SET balance= 600
 WHERE role = 'customer'
 
-SELECT * FROM "Users"
-
 SELECT * FROM "Contests"
 
 -- ==================== TASK № 11 ==============================
+
+UPDATE "Users" u 
+SET balance = u.balance + 10
+FROM (
+  SELECT *
+  FROM "Users" 
+  WHERE role = 'creator' 
+  ORDER BY rating DESC
+  LIMIT 3
+) AS us
+WHERE us.id = u.id
+
+UPDATE "Users" SET balance= 0
+WHERE role = 'creator'
+
