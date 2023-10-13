@@ -1,9 +1,12 @@
-const logger = require('./writeToFileLog')
+const writeLogToFile = require('./writeToFileLog');
 
-module.exports.logger = async (err, req, res, next) => {
-	if (err) {
-    logger.writeToFile(err)
-		next(err);
+module.exports = async (err, req, res, next) => {
+	try {
+		if (err) {
+			writeLogToFile.writeToFile(err);
+			next(err);
+		}
+	} catch (error) {
+		next(error);
 	}
-	next()
-}
+};

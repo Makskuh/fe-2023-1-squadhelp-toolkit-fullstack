@@ -1,9 +1,8 @@
 const fs = require('fs');
 
 module.exports.writeToFile = (err) => {
-  try {
     const logDir = './log';
-    const data = `{message: "${err.message}",timestamp: ${new Date().getTime()}, code: ${err.code}, stackTrace: {${err.stack}}}\r\n`;
+    const data = `{message: "${err.message}",timestamp: ${new Date().getTime()}, code: ${err.code}, stackTrace: {${err.stack}}},\r\n`;
     if (!fs.existsSync(logDir)) {
       fs.mkdirSync(logDir);
     }
@@ -12,7 +11,4 @@ module.exports.writeToFile = (err) => {
       code: 438,
     };
     return fs.appendFileSync(`${logDir}/error.log`, data, options);
-  } catch (error) {
-    throw error
-  }
 };
