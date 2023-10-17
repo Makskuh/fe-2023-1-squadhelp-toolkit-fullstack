@@ -59,3 +59,4 @@ WHERE us.id = u.id
 UPDATE "Users" SET balance= 0
 WHERE role = 'creator'
 
+-- =======================================================================
