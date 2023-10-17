@@ -4,6 +4,7 @@
 ./client/node_modules
 ./server/node_modules
 ./server/uploadFiles
+./server/log/error.json
 ./server/upload
 ./server/public
 
@@ -11,3 +12,6 @@
 .server/public/images
 **server/public/*
 *server/public/*
+./server/log
+**server/log/*
+*server/log/*

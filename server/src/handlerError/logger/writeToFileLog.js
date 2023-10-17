@@ -1,7 +1,9 @@
 const fs = require('fs');
 
-module.exports.writeToFile = (err) => {
-  const logDir = './log';
+module.exports.writeToFile =  (err) => {
+  try {
+    const logDir = './log';
+  const fullPathToLog = `${logDir}/error.json`
   let arrayLogError = [];
   const options = {
     encoding: 'utf8',
@@ -13,16 +15,20 @@ module.exports.writeToFile = (err) => {
     code: err.code,
     stackTrace: err.stack,
   };
-  if (!fs.existsSync(logDir)) {
+  if (!fs.existsSync(fullPathToLog)) {
     fs.mkdirSync(logDir);
     arrayLogError.push(data);
     const arrJSON = JSON.stringify(arrayLogError);
-    return fs.appendFileSync(`${logDir}/error.json`, arrJSON, options);
+    return  fs.appendFileSync(fullPathToLog, arrJSON, options);
   }
-  let lastLogToJson = JSON.parse(fs.readFileSync(`${logDir}/error.json`, {
+  let lastLogToJson = JSON.parse(fs.readFileSync(fullPathToLog, {
     encoding: 'utf8',
     flag: 'r',
   }));
-  lastLogToJson.push(data)
-  return fs.writeFileSync(`${logDir}/error.json`, JSON.stringify(lastLogToJson), options);
+  lastLogToJson.push(data);
+  return fs.writeFileSync(fullPathToLog, JSON.stringify(lastLogToJson), options);
+  } catch (error) {
+    next()
+  }
+  
 };
