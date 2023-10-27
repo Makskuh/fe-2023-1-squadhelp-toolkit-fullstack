@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import React from 'react';
 import styles from '../BtnGroup.module.sass';
 
 function BtnItem({ dataBtn, id, handleClick}) {
