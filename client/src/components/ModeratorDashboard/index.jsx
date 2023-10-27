@@ -2,16 +2,18 @@ import React from 'react';
 import styles from './moderTable.module.sass';
 
 function ModeratorDashboard() {
+
+  
   return (
     <div className={styles.tableWrapper}>
       <table className={styles.table}>
         <caption className={styles.titleTable}>
-          Moderator Contest Dashboard
+          Moderator Offer Dashboard
         </caption>
         <thead className={styles.thead}>
           <tr className={styles.tableTr}>
             <th className={styles.tableTh} scope="col">
-              Order ID
+              Offer ID
             </th>
             <th className={styles.tableTh} scope="col">
               Creator
