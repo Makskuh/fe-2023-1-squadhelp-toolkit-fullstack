@@ -1,7 +1,17 @@
-import React from 'react';
 import styles from './moderTable.module.sass';
-import { getAllOffers } from '../../api/rest/restController';
+import { getAllOffers } from '../../store/slices/moderatorSlice';
+import { useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
+import { useEffect,useState } from 'react';
+
 function ModeratorDashboard() {
+  const  [offers,setOffers] = useState([])
+  const dispath = useDispatch();
+  useEffect(async () => {
+    const result = await dispath(getAllOffers());
+    setOffers(result.payload)
+  }, [dispath]);
+
   return (
     <div className={styles.tableWrapper}>
       <table className={styles.table}>
@@ -31,30 +41,13 @@ function ModeratorDashboard() {
           </tr>
         </thead>
         <tbody className={styles.tableBody}>
-          <tr className={styles.tableTr}>
-            <td className={styles.tableTd} data-label="OrderId">
-              1
-            </td>
-            <td className={styles.tableTd} data-label="Creator">
-              Creator1
-            </td>
-            <td className={styles.tableTd} data-label="Buyer">
-              Buyer1
-            </td>
-            <td className={styles.tableTd} data-label="CreatedAt">
-              03/31/2023
-            </td>
-            <td className={styles.tableTd} data-label="Confirm">
-              <button className={styles.btnConfirmContest}>+</button>
-            </td>
-            <td className={styles.tableTd} data-label="Reject">
-              <button className={styles.btnRejectContest}>-</button>
-            </td>
-          </tr>
+          {offers.map((val) => <p>{val.contestId}</p>)}
         </tbody>
       </table>
     </div>
   );
 }
-
-export default ModeratorDashboard;
+const mStP = (state) => ({
+  offers: state.offers,
+});
+export default connect(mStP)(ModeratorDashboard);
