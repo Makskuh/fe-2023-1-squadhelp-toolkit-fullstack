@@ -1,7 +1,8 @@
-const moderatorRouter = require("express").Router();
+const moderatorRouter = require('express').Router();
+const moderatorController = require('../controllers/moderatorController');
 
 moderatorRouter.get(
-	'/getAllOffers'
+	'/getAllOffers',moderatorController.getAllOffers
 )
 
 module.exports = moderatorRouter 
