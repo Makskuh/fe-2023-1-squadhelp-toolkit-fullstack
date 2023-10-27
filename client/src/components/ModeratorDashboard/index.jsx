@@ -1,9 +1,7 @@
 import React from 'react';
 import styles from './moderTable.module.sass';
-
+import { getAllOffers } from '../../api/rest/restController';
 function ModeratorDashboard() {
-
-  
   return (
     <div className={styles.tableWrapper}>
       <table className={styles.table}>
