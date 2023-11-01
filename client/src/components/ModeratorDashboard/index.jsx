@@ -1,4 +1,5 @@
 import styles from './moderTable.module.sass';
+import OfferItem from './offerItem';
 import { getAllOffers } from '../../store/slices/moderatorSlice';
 import { useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
@@ -10,8 +11,13 @@ function ModeratorDashboard() {
   useEffect(async () => {
     const result = await dispath(getAllOffers());
     setOffers(result.payload)
-  }, [dispath]);
-
+  }, []);
+  const confirmOffer = () => {
+    console.log('+')
+  }
+  const rejectOffer = () => {
+    console.log('-')
+  }
   return (
     <div className={styles.tableWrapper}>
       <table className={styles.table}>
@@ -27,7 +33,7 @@ function ModeratorDashboard() {
               Creator
             </th>
             <th className={styles.tableTh} scope="col">
-              Buyer
+              Text
             </th>
             <th className={styles.tableTh} scope="col">
               Created at{' '}
@@ -41,7 +47,7 @@ function ModeratorDashboard() {
           </tr>
         </thead>
         <tbody className={styles.tableBody}>
-          {offers.map((val) => <p>{val.contestId}</p>)}
+          {offers.map((val) => <OfferItem data={val} key={val.id} confirmClick={confirmOffer} rejectClick={rejectOffer}/>)}
         </tbody>
       </table>
     </div>
