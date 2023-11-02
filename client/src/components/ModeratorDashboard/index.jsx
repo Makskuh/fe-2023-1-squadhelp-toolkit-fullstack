@@ -3,21 +3,22 @@ import OfferItem from './offerItem';
 import { getAllOffers } from '../../store/slices/moderatorSlice';
 import { useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function ModeratorDashboard() {
-  const  [offers,setOffers] = useState([])
+  const [offers, setOffers] = useState([]);
   const dispath = useDispatch();
   useEffect(async () => {
     const result = await dispath(getAllOffers());
-    setOffers(result.payload)
+    setOffers(result.payload);
   }, []);
   const confirmOffer = () => {
-    console.log('+')
-  }
+    console.log('+');
+  };
   const rejectOffer = () => {
-    console.log('-')
-  }
+    console.log('-');
+  };
+  console.log(offers);
   return (
     <div className={styles.tableWrapper}>
       <table className={styles.table}>
@@ -27,16 +28,19 @@ function ModeratorDashboard() {
         <thead className={styles.thead}>
           <tr className={styles.tableTr}>
             <th className={styles.tableTh} scope="col">
-              Offer ID
+              Contest ID
             </th>
             <th className={styles.tableTh} scope="col">
               Creator
             </th>
             <th className={styles.tableTh} scope="col">
+              Buyer
+            </th>
+            <th className={styles.tableTh} scope="col">
               Text
             </th>
             <th className={styles.tableTh} scope="col">
-              Created at{' '}
+              Status
             </th>
             <th className={styles.tableTh} scope="col">
               Confirm
@@ -47,7 +51,14 @@ function ModeratorDashboard() {
           </tr>
         </thead>
         <tbody className={styles.tableBody}>
-          {offers.map((val) => <OfferItem data={val} key={val.id} confirmClick={confirmOffer} rejectClick={rejectOffer}/>)}
+          {offers.map((val) => (
+            <OfferItem
+              data={val}
+              key={val.id}
+              confirmClick={confirmOffer}
+              rejectClick={rejectOffer}
+            />
+          ))}
         </tbody>
       </table>
     </div>

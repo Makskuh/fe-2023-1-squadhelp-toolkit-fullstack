@@ -127,7 +127,6 @@ module.exports.setNewOffer = async (req, res, next) => {
   }
   obj.userId = req.tokenData.userId;
   obj.contestId = req.body.contestId;
-  console.log(obj);
   try {
     const result = await contestQueries.createOffer(obj);
     delete result.contestId;
