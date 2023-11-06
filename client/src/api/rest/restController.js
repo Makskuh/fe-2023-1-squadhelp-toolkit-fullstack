@@ -90,4 +90,6 @@ export const getActiveContests = (data) => {
 export const getContestById = ({ contestId }) =>
   http.get(`contests/${contestId}`);
 
-export const getAllOffers = () => http.get('moderator/getAllOffers')
+export const getAllOffers = () => http.get('moderator/getAllOffers');
+
+export const changeOfferStatus = ({id}) => http.put(`moderator/changestatus`, id)

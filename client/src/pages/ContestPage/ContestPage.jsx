@@ -23,6 +23,7 @@ import Spinner from '../../components/Spinner/Spinner';
 import TryAgain from '../../components/TryAgain/TryAgain';
 import 'react-image-lightbox/style.css';
 import Error from '../../components/Error/Error';
+import constants from '../../constants';
 
 class ContestPage extends React.Component {
   componentWillUnmount() {
@@ -41,16 +42,19 @@ class ContestPage extends React.Component {
   setOffersList = () => {
     const array = [];
     for (let i = 0; i < this.props.contestByIdStore.offers.length; i++) {
-      array.push(
-        <OfferBox
-          data={this.props.contestByIdStore.offers[i]}
-          key={this.props.contestByIdStore.offers[i].id}
-          needButtons={this.needButtons}
-          setOfferStatus={this.setOfferStatus}
-          contestType={this.props.contestByIdStore.contestData.contestType}
-          date={new Date()}
-        />
-      );
+      if (
+        this.props.userStore.data.role === constants.CREATOR || this.props.contestByIdStore.offers.status === constants.OFFER_STATUS_APPROVED_MODERATOR) {
+        array.push(
+          <OfferBox
+            data={this.props.contestByIdStore.offers[i]}
+            key={this.props.contestByIdStore.offers[i].id}
+            needButtons={this.needButtons}
+            setOfferStatus={this.setOfferStatus}
+            contestType={this.props.contestByIdStore.contestData.contestType}
+            date={new Date()}
+          />
+        );
+      }
     }
     return array.length !== 0 ? (
       array
@@ -68,7 +72,7 @@ class ContestPage extends React.Component {
     return (
       contestCreatorId === userId &&
       contestStatus === CONSTANTS.CONTEST_STATUS_ACTIVE &&
-      offerStatus === CONSTANTS.OFFER_STATUS_PENDING
+      offerStatus === CONSTANTS.OFFER_STATUS_APPROVED_MODERATOR
     );
   };
 
